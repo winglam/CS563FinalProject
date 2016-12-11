@@ -16,6 +16,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -37,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         View.OnClickListener listener = new MyLovelyOnClickListener(this);
         fab.setOnClickListener(listener);
+
+
+        FloatingActionButton contacts = (FloatingActionButton) findViewById(R.id.contacts);
+        PhoneOnClickListener phoneOnClickListener = new PhoneOnClickListener(this);
+        contacts.setOnClickListener(phoneOnClickListener);
     }
 
     @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -59,6 +65,29 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
+class PhoneOnClickListener implements View.OnClickListener
+{
+    Activity myLovelyVariable;
+    public PhoneOnClickListener(Activity myLovelyVariable) {
+        this.myLovelyVariable = myLovelyVariable;
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        if (ContextCompat.checkSelfPermission(myLovelyVariable, android.Manifest.permission.ACCESS_FINE_LOCATION ) ==
+            PackageManager.PERMISSION_GRANTED) {
+            TelephonyManager tMgr = (TelephonyManager)myLovelyVariable.getSystemService(Context.TELEPHONY_SERVICE);
+            String mPhoneNumber = tMgr.getLine1Number();
+            Snackbar.make(v, "Got phone number as " + mPhoneNumber, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        } else {
+            ActivityCompat.requestPermissions(myLovelyVariable,
+                                              new String[]{Manifest.permission.READ_PHONE_STATE}, 0);
+            Snackbar.make(v, "Getting phone permission", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        }
+    }
+};
 
 class MyLovelyOnClickListener implements View.OnClickListener
 {
@@ -84,7 +113,6 @@ class MyLovelyOnClickListener implements View.OnClickListener
                     .setAction("Action", null).show();
         }
     }
-
 };
 
 class MyLocationListener implements LocationListener {
