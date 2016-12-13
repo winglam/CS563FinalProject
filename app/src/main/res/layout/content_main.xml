@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,19 +14,59 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:text="This app contains one button to get the location of the device. The purpose of this app is to showcase the CRS tool Wing and DengFeng built for their CS563 final project."/>
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:text="Please login to use the app."/>
 
-    <ImageButton
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        android:text="Username:"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="30sp"
+        android:textColorHint="#D3D3D3"
+        android:textColor="#D3D3D3"
+        android:id="@+id/username"
+        android:paddingLeft="5dp"
+        android:background="#A9A9A9"
+        android:hint="Username"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        android:text="Password:"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_marginTop="10dp"
+        android:textSize="30sp"
+        android:textColorHint="#D3D3D3"
+        android:textColor="#D3D3D3"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:paddingLeft="5dp"
+        android:background="#A9A9A9"
+        android:id="@+id/password"
+        android:hint="Password"/>
+
+
+    <TextView
         android:id="@+id/fab"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_map"/>
-    <ImageButton
-        android:id="@+id/contacts"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_info"/>
+        android:layout_marginTop="30dp"
+        android:padding="5dp"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#A9A9A9"
+        android:textColor="#000"
+        android:text="Login"/>
 </LinearLayout>
